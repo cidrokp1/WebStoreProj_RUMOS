@@ -1,0 +1,73 @@
+﻿@model DAL.Models.Fatura
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Fatura</h4>
+    <hr />
+    <dl id="modal-content" class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.NumeroFatura)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.NumeroFatura)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Empregado)
+        </dt>
+        <dd class="col-sm-9">
+            <p><strong> Nome:</strong> @Html.DisplayFor(model => model.Empregado.Nome)</p>
+            <p><strong>Email:</strong> @Html.DisplayFor(model => model.Empregado.Email)</p>
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.LinhasDeFatura)
+        </dt>
+
+        <table class="ml-3 col-8 table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Produto</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col">Valor Total</th>
+                </tr>
+            </thead>
+            <tbody>
+               @{int i = 0; } 
+                @foreach (var item in Model.LinhasDeFatura)
+                {
+                    i++;
+                    <tr>
+                        <td>@i</td>
+                        <td> @item.Produto.Nome</td>
+                        <td>@item.Quantidade</td>
+                        <td>@item.Produto.Preco</td>
+                        <td> @item.PrecoTotal</td>
+                    </tr>
+                 }
+                
+            </tbody>
+        </table>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.PrecoTotal)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.PrecoTotal)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" class="btn btn-sm btn-outline-secondary" asp-route-id="@Model.FaturaId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

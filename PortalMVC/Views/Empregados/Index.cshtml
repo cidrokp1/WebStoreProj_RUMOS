@@ -1,0 +1,43 @@
+﻿@model IEnumerable<DAL.Models.Empregado>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de Empregados</h1>
+
+
+<br />
+
+<p>
+    <a class="btn btn-info modal-href" asp-action="Create">Criar Novo</a>
+</p>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-sm btn-outline-secondary" asp-route-id="@item.EmpregadoId">Editar</a> 
+                <a asp-action="Delete" class="btn btn-sm btn-outline-danger" asp-route-id="@item.EmpregadoId">Apagar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

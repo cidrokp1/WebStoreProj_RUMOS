@@ -1,0 +1,36 @@
+﻿@model DAL.Models.Fatura
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Fatura</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form id="modal-content" asp-action="Edit" class="btn btn-sm btn-outline-secondary">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="FaturaId" />
+            <div class="form-group">
+                <label asp-for="Data" class="control-label"></label>
+                <input asp-for="Data" class="form-control" />
+                <span asp-validation-for="Data" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrecoTotal" class="control-label"></label>
+                <input asp-for="PrecoTotal" class="form-control" />
+                <span asp-validation-for="PrecoTotal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
